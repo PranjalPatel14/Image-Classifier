@@ -1,0 +1,20 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification Model</title>
+</head>
+<body>
+    <h1>Upload an image for Classification</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+    {% if filename %}
+        <h2>Prediction Result</h2>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="200">
+        <p>Veg/Fruit in image is: {{ predicted_class }}</p>
+        <p>With accuracy of: {{ accuracy }}%</p>
+    {% endif %}
+</body>
+</html>
